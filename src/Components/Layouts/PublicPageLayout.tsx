@@ -38,7 +38,8 @@ import { collection, query, getDocs, orderBy, where } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 // 本地json資料
-import footerData from "../json/footer.json";
+import footerData from "../Json/footer.json";
+
 function PublicPageLayout() {
   const [isOpen, setIsOpen] = useState(false);
   const [isToggled, setToggled] = useState(false);
