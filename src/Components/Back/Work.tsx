@@ -151,8 +151,8 @@ function Work({
                         </label>
                       </span>
                       <p className="font-bold mb-[1px]">{title}</p>
-                      <span className="text-[12px]">
-                        影片位置{" "}
+                      <span className="text-[12px] flex gap-1 flex-wrap my-1">
+                        <div className="bg-gray-200  rounded-md">影片位置</div>
                         <a
                           href={`${video_url}`}
                           target="_blank"
@@ -160,14 +160,13 @@ function Work({
                         >
                           {video_url}
                         </a>
-                      </span>{" "}
-                      <br />
+                      </span>
                       <span className="text-[12px]">
                         {year_of_work ? `Year ${year_of_work}` : ""}
                       </span>
                     </td>
                     <td>
-                      <ul className="p-0 m-0 list-none flex flex-col">
+                      <ul className="p-4 m-0 list-none flex flex-col">
                         {categoryData
                           ? categoryData.map((item: any, index: number) => {
                               const { id, name } = item;
@@ -176,8 +175,8 @@ function Work({
                                   key={name + index}
                                   className={
                                     id === category
-                                      ? "font-bold text-brown"
-                                      : "mr-[6px] cursor-pointer text-black/70 hover:font-bold hover:text-brown"
+                                      ? "font-bold text-blue-500"
+                                      : "mr-[6px] cursor-pointer text-black/50 hover:font-bold hover:text-blue-400"
                                   }
                                   onClick={() => {
                                     handleCategoryId(id, uid);
