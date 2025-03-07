@@ -17,36 +17,48 @@ function AddCategory({ handleCreateCategory }: { handleCreateCategory: any }) {
     handleCreateCategory(currentData);
   };
   return (
-    <div className="miniForm">
+    <div className="miniForm p-4">
       <h3>新增分類</h3>
       <form onSubmit={handleSubmit(onSubmit)} className="row">
-        <div className="mb-3 ">
-          <label htmlFor="name" className="form-label">
+        <div className="mb-3 space-y-2">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-700"
+          >
             英文名稱
           </label>
           <input
             type="text"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="name"
             {...register("name", { required: true })}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="name_cht" className="form-label">
+        <div className="mb-3 space-y-2">
+          <label
+            htmlFor="name_cht"
+            className="block text-sm font-medium text-gray-700"
+          >
             中文名稱
           </label>
           <input
             type="text"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="name_cht"
             {...register("name_cht", { required: true })}
           />
         </div>
-        <div className="d-grid gap-2 d-md-block col-12">
-          <button type="submit" className="btn btn-primary">
+        <div className="flex gap-2">
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          >
             新增
           </button>
-          <button type="reset" className="btn btn-light">
+          <button
+            type="reset"
+            className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md"
+          >
             重設
           </button>
         </div>

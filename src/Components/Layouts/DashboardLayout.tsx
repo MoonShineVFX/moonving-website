@@ -285,7 +285,7 @@ function DashboardLayout() {
       <div className="flex ">
         <AdminNav />
         <div
-          className="main w-[100%] ms-sm-auto col-lg-10 px-md-4 mt-4 bg-white"
+          className="main w-[100%] px-4  bg-white"
           style={{ minHeight: "100vh" }}
         >
           <Routes>

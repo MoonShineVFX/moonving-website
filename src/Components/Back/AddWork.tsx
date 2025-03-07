@@ -30,8 +30,7 @@ function AddWrok({
       time_added: new Date().toISOString(),
       title: data.title,
       intro: data.description,
-      vimeo_id: data.vimeoid,
-      youtube_id: data.yturl,
+      video_url: data.video_url,
       img: imgFileName,
       sort_num: latestSortNum,
       display: "1",
@@ -57,83 +56,116 @@ function AddWrok({
   // 若setFile有資料會執行檔案上傳
   const { progress, url } = useStorage(file);
   return (
-    <div>
+    <div className="p-4">
       <h3>新增作品</h3>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-3">
-          <label htmlFor="title">名稱</label>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <div className="space-y-2">
+          <label
+            htmlFor="title"
+            className="block text-sm font-medium text-gray-700"
+          >
+            名稱
+          </label>
           <input
             type="text"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="title"
             {...register("title", { required: true })}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="vimeoid">作品年分(2022)</label>
+
+        <div className="space-y-2">
+          <label
+            htmlFor="yearofwork"
+            className="block text-sm font-medium text-gray-700"
+          >
+            作品年分(2022)
+          </label>
           <input
             type="text"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="yearofwork"
             {...register("yearofwork")}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="vimeoid">vimeo 影片 ID (example: 594440744)</label>
+
+        <div className="space-y-2">
+          <label
+            htmlFor="video_url"
+            className="block text-sm font-medium text-gray-700"
+          >
+            影片 URL
+          </label>
           <input
             type="text"
-            className="form-control"
-            id="vimeoid"
-            {...register("vimeoid")}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            id="video_url"
+            {...register("video_url")}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="vimeoid">YT 影片 URL</label>
-          <input
-            type="text"
-            className="form-control"
-            id="yturl"
-            {...register("yturl")}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="file">圖片</label>
+
+        <div className="space-y-2">
+          <label
+            htmlFor="file"
+            className="block text-sm font-medium text-gray-700"
+          >
+            圖片
+          </label>
           <input
             type="file"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="file"
             {...register("file", { required: true })}
           />
 
-          {error && <p>{error}</p>}
-          <div className="preview">
-            {file && <p>{progress}% uploaded</p>}
+          {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+          <div className="mt-2">
+            {file && (
+              <p className="text-sm text-gray-600">{progress}% uploaded</p>
+            )}
             {url && (
-              <p>
+              <p className="text-sm">
                 <b>圖片位置: </b>
-                <a href={url} className="text-break">
+                <a
+                  href={url}
+                  className="text-blue-500 hover:underline break-all"
+                >
                   Image Url(open)
                 </a>
               </p>
             )}
-            {url && <img src={url} className="img-fluid" />}
+            {url && (
+              <img src={url} className="mt-2 max-w-full h-auto rounded-md" />
+            )}
           </div>
         </div>
-        <div className="mb-3">
-          <label htmlFor="description">簡介(credit)</label>
+
+        <div className="space-y-2">
+          <label
+            htmlFor="description"
+            className="block text-sm font-medium text-gray-700"
+          >
+            簡介(credit)
+          </label>
           <textarea
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="description"
-            cols={25}
-            rows={10}
+            rows={6}
             {...register("description")}
           ></textarea>
         </div>
-        <div className="d-grid gap-2 d-md-block">
-          <button type="submit" className="btn btn-primary">
+
+        <div className="flex space-x-2 pt-2">
+          <button
+            type="submit"
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
             儲存
           </button>
-          <button type="reset" className="btn btn-light">
+          <button
+            type="reset"
+            className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+          >
             重設
           </button>
         </div>

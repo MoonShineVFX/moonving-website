@@ -4,6 +4,7 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 // 新增修改作品頁面
 import AddWork from "./AddWork";
 import EditWork from "./EditWork";
+import { Button } from "../ui/button";
 function Work({
   handleCreateWork,
   workData,
@@ -72,48 +73,58 @@ function Work({
   };
 
   return (
-    <div className="flex">
-      <div className="w-9/12">
-        <h3>
+    <div className="flex ">
+      <div className="w-9/12 px-4">
+        <h3 className="flex items-center gap-2 my-2">
           作品列表
-          <button
-            type="button"
-            className="btn btn-primary standardBtn ms-2"
+          <Button
             onClick={() => {
               handleClick("create", "");
             }}
           >
             新增作品
-          </button>
+          </Button>
         </h3>
-        <table className="font-[arial] text-[15px] border border-[#ccc]">
+        <table className=" text-[15px]  border-collapse border border-gray-400">
           <thead className="bg-[#e6eaee] text-[#242424]">
             <tr>
-              <th scope="col">作品縮圖</th>
-              <th scope="col">作品名稱</th>
-              <th scope="col">分類項目(擇一)</th>
-              <th scope="col">是否可見</th>
-              <th scope="col">編輯/刪除</th>
+              <th scope="col" className="p-2">
+                作品縮圖
+              </th>
+              <th scope="col" className="p-2">
+                作品名稱
+              </th>
+              <th scope="col" className="p-2">
+                分類項目(擇一)
+              </th>
+              <th scope="col" className="p-2">
+                是否可見
+              </th>
+              <th scope="col" className="p-2">
+                編輯/刪除
+              </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-[15px]">
             {workData.length > 0 ? (
               workData.map((item: any, index: number) => {
                 const {
                   uid,
                   id,
                   title,
-                  vimeo_id,
                   display,
                   imgpath,
                   category,
                   year_of_work,
                   sort_num,
-                  youtube_id,
+                  video_url,
                 } = item;
                 return (
-                  <tr key={title + index}>
-                    <td>
+                  <tr
+                    key={title + index}
+                    className="text-[15px] border-b border-[#ccc] "
+                  >
+                    <td className="p-2">
                       {" "}
                       <img
                         src={
@@ -125,7 +136,7 @@ function Work({
                         className="w-[100px]"
                       />
                     </td>
-                    <td className="w-[23%]">
+                    <td className="w-[25%]">
                       <span className="text-[12px]">
                         id #{id} /{" "}
                         <label htmlFor="">
@@ -141,24 +152,13 @@ function Work({
                       </span>
                       <p className="font-bold mb-[1px]">{title}</p>
                       <span className="text-[12px]">
-                        VIMEO{" "}
+                        影片位置{" "}
                         <a
-                          href={`https://vimeo.com/${vimeo_id}`}
+                          href={`${video_url}`}
                           target="_blank"
                           rel="noreferrer"
                         >
-                          {vimeo_id}
-                        </a>
-                      </span>{" "}
-                      <br />
-                      <span className="text-[12px]">
-                        YT{" "}
-                        <a
-                          href={`https://www.youtube.com/watch?v=${youtube_id}`}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {youtube_id}
+                          {video_url}
                         </a>
                       </span>{" "}
                       <br />
@@ -204,25 +204,22 @@ function Work({
                       </div>
                     </td>
                     <td>
-                      <div className="d-grid gap-2 d-md-block">
-                        <button
-                          type="button"
-                          className="btn btn-success btn-sm"
+                      <div className="flex gap-2 justify-end">
+                        <Button
                           onClick={() => {
                             handleClick("edit", uid);
                           }}
                         >
                           編輯
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-light btn-sm"
+                        </Button>
+                        <Button
+                          variant="outline"
                           onClick={() => {
                             onDelete(uid);
                           }}
                         >
                           刪除
-                        </button>
+                        </Button>
                       </div>
                     </td>
                   </tr>

@@ -5,6 +5,7 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import AddLab from "./AddLab";
 import EditLab from "./EditLab";
 import { LabDataProps } from "../../types/types";
+import { Button } from "../ui/button";
 function Lab({
   labData,
   handleDeleteLabData,
@@ -43,22 +44,20 @@ function Lab({
   };
   return (
     <div className="flex">
-      <div className="w-9/12">
-        LAB info
+      <div className="w-9/12 px-4 py-2">
+        <h1 className="text-2xl font-bold">LAB info</h1>
         <div className="labdata">
-          <h3>
+          <h3 className="flex items-center gap-2 my-2">
             Lab列表
-            <button
-              type="button"
-              className="btn btn-primary standardBtn ms-2"
+            <Button
               onClick={() => {
                 handleClick("create", "");
               }}
             >
               新增LAB
-            </button>
+            </Button>
           </h3>
-          <div className="row g-4">
+          <div className="grid grid-cols-1 gap-4">
             {labData.length > 0 ? (
               labData.map((item, index) => {
                 const {
@@ -79,96 +78,90 @@ function Lab({
                   imgpath,
                 } = item;
                 return (
-                  <div className="col-12" key={id + index}>
-                    <div className="card">
-                      <div className="card-body">
+                  <div className="w-full" key={id + index}>
+                    <div className="card bg-gray-100">
+                      <div className="flex flex-col gap-2 p-4">
                         <h5>#{id}</h5>
-                        <div className="fs-6">
-                          <span className="badge  bg-secondary">
+                        <div className="flex gap-2 items-center">
+                          <span className=" bg-gray-300 text-gray-700  p-2 rounded-md">
                             英文名稱 / 中文名稱
                           </span>{" "}
                           {name} / {name_cht}
                         </div>
 
-                        <div className="card-text">
-                          <span className="badge  bg-secondary">
+                        <div className="flex flex-col   justify-between items-start my-2">
+                          <span className=" bg-gray-300 text-gray-700  p-2 rounded-md">
                             內文-1 英文
                           </span>
                           <br />
-                          <div className="fs-6 fw-bolder">{title_1}</div>
-                          <div className="fs-6 fw-light">{description_1}</div>
+                          <div className="font-bold">{title_1}</div>
+                          <div className="font-light">{description_1}</div>
                         </div>
-                        <div className="card-text">
-                          <span className="badge  bg-secondary">
+                        <div className="flex flex-col   justify-between items-start my-2">
+                          <span className=" bg-gray-300 text-gray-700  p-2 rounded-md">
                             內文-1 中文
                           </span>
                           <br />
-                          <div className="fs-6 fw-bolder">{title_1_cht}</div>
-                          <div className="fs-6 fw-light">
-                            {description_1_cht}
-                          </div>
+                          <div className="font-bold">{title_1_cht}</div>
+                          <div className="font-light">{description_1_cht}</div>
                         </div>
-                        <div className="card-text">
-                          <span className="badge  bg-secondary">
+                        <div className="flex flex-col   justify-between items-start my-2">
+                          <span className=" bg-gray-300 text-gray-700  p-2 rounded-md">
                             內文-2 英文
                           </span>
                           <br />
-                          <div className="fs-6 fw-bolder">{title_2}</div>
-                          <div className="fs-6 fw-light">{description_2}</div>
+                          <div className="font-bold">{title_2}</div>
+                          <div className="font-light">{description_2}</div>
                         </div>
-                        <div className="card-text">
-                          <span className="badge  bg-secondary">
+                        <div className="flex flex-col   justify-between items-start my-2">
+                          <span className=" bg-gray-300 text-gray-700  p-2 rounded-md">
                             內文-2 中文
                           </span>
                           <br />
-                          <div className="fs-6 fw-bolder">{title_2_cht}</div>
-                          <div className="fs-6 fw-light">
-                            {description_2_cht}
-                          </div>
+                          <div className="font-bold">{title_2_cht}</div>
+                          <div className="font-light">{description_2_cht}</div>
                         </div>
 
-                        <p className="card-text">
-                          <span className="badge  bg-secondary">網站連結</span>
+                        <div className="flex flex-col   justify-between items-start my-2">
+                          <span className=" bg-gray-300 text-gray-700  p-2 rounded-md">
+                            網站連結
+                          </span>
                           <br />
                           <a href={sitelink} target="_blank" rel="noreferrer">
                             {sitelink}
                           </a>
-                        </p>
-                        <p className="card-text">
-                          <span className="badge  bg-secondary">影片連結</span>
+                        </div>
+                        <div className="flex flex-col   justify-between items-start my-2">
+                          <span className=" bg-gray-300 text-gray-700  p-2 rounded-md">
+                            影片連結
+                          </span>
                           <br />
                           <a href={video} target="_blank" rel="noreferrer">
                             {video}
                           </a>
-                        </p>
-                        <p className="card-text">
-                          <span className="badge  bg-secondary">圖片</span>
-                          <br />{" "}
-                          <img
-                            src={imgpath}
-                            className="img-thumbnail"
-                            style={{ width: "200px" }}
-                          />
-                        </p>
-                        <div className="d-grid gap-2 d-md-block">
-                          <button
-                            type="button"
-                            className="btn btn-primary btn-sm"
+                        </div>
+                        <div className="flex flex-col   justify-between items-start my-2">
+                          <span className=" bg-gray-300 text-gray-700  p-2 rounded-md">
+                            圖片
+                          </span>
+                          <br /> <img src={imgpath} className="w-[200px]" />
+                        </div>
+                        <div className="flex gap-2 items-center">
+                          <Button
                             onClick={() => {
                               handleClick("edit", uid);
                             }}
                           >
                             編輯
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-light btn-sm"
+                          </Button>
+                          <Button
+                            variant="outline"
                             onClick={() => {
                               onDelete(uid);
                             }}
                           >
                             刪除
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     </div>

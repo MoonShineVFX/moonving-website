@@ -17,8 +17,7 @@ function EditWork({
     defaultValues: {
       title: "",
       intro: "",
-      vimeo_id: "",
-      youtube_id: "",
+      video_url: "",
       year_of_work: "",
       file: undefined,
     },
@@ -38,8 +37,7 @@ function EditWork({
     const currentDataWithFile = {
       title: data.title,
       intro: data.intro,
-      vimeo_id: data.vimeo_id,
-      youtube_id: data.youtube_id,
+      video_url: data.video_url,
       img: imgFileName,
       year_of_work: data.year_of_work,
     };
@@ -48,8 +46,7 @@ function EditWork({
     const currentDataWithoutFile = {
       title: data.title,
       intro: data.intro,
-      vimeo_id: data.vimeo_id,
-      youtube_id: data.youtube_id,
+      video_url: data.video_url,
       year_of_work: data.year_of_work,
     };
     // 如果有新圖檔 執行編輯資料(有圖檔) 沒有新圖檔 修改文字資料
@@ -87,50 +84,62 @@ function EditWork({
   // 若setFile有資料會執行檔案上傳
   const { progress, url } = useStorage(file);
   return (
-    <div>
+    <div className="p-4">
       <h3>編輯作品</h3>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-3">
-          <label htmlFor="title">名稱</label>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <div className="space-y-2">
+          <label
+            htmlFor="title"
+            className="block text-sm font-medium text-gray-700"
+          >
+            名稱
+          </label>
           <input
             type="text"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="title"
             {...register("title", { required: true })}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="vimeoid">作品年分(2022)</label>
+        <div className="space-y-2">
+          <label
+            htmlFor="yearofwork"
+            className="block text-sm font-medium text-gray-700"
+          >
+            作品年分(2022)
+          </label>
           <input
             type="text"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="year_of_work"
             {...register("year_of_work")}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="vimeo_id">vimeo 影片 ID (example: 594440744)</label>
+
+        <div className="space-y-2">
+          <label
+            htmlFor="video_url"
+            className="block text-sm font-medium text-gray-700"
+          >
+            影片 URL
+          </label>
           <input
             type="text"
-            className="form-control"
-            id="vimeo_id"
-            {...register("vimeo_id")}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            id="video_url"
+            {...register("video_url")}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="vimeoid">YT 影片 URL</label>
-          <input
-            type="text"
-            className="form-control"
-            id="youtube_id"
-            {...register("youtube_id")}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="file">圖片</label>
+        <div className="space-y-2">
+          <label
+            htmlFor="file"
+            className="block text-sm font-medium text-gray-700"
+          >
+            圖片
+          </label>
           <input
             type="file"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="file"
             {...register("file")}
           />
@@ -156,21 +165,32 @@ function EditWork({
             )}
           </div>
         </div>
-        <div className="mb-3">
-          <label htmlFor="intro">簡介(credit)</label>
+        <div className="space-y-2">
+          <label
+            htmlFor="intro"
+            className="block text-sm font-medium text-gray-700"
+          >
+            簡介(credit)
+          </label>
           <textarea
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="intro"
             cols={25}
             rows={10}
             {...register("intro")}
           ></textarea>
         </div>
-        <div className="d-grid gap-2 d-md-block">
-          <button type="submit" className="btn btn-primary">
+        <div className="flex gap-2">
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          >
             儲存
           </button>
-          <button type="reset" className="btn btn-light">
+          <button
+            type="reset"
+            className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md"
+          >
             重設
           </button>
         </div>

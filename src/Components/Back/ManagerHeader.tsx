@@ -23,26 +23,35 @@ function ManagerHeader({
     reset(headerData[0]);
   }, [headerData]);
   return (
-    <div className="miniForm">
+    <div className="miniForm p-4">
       <h3>編輯 Header 內容</h3>
-      <form onSubmit={handleSubmit(onSubmit)} className="row">
-        <div className="mb-3 ">
-          <label htmlFor="name" className="form-label">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <div className="space-y-2">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-700"
+          >
             影片位置
           </label>
           <input
             type="text"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="video"
             {...register("video", { required: true })}
           />
         </div>
 
-        <div className="d-grid gap-2 d-md-block col-12">
-          <button type="submit" className="btn btn-primary">
+        <div className="flex gap-2">
+          <button
+            type="submit"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
             儲存
           </button>
-          <button type="reset" className="btn btn-light">
+          <button
+            type="reset"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
             取消
           </button>
         </div>

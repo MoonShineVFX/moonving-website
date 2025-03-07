@@ -65,56 +65,75 @@ function AddLab({ handleCreateLab }: { handleCreateLab: any }) {
   // 若setFile有資料會執行檔案上傳
   const { progress, url } = useStorage(file);
   return (
-    <div className="miniForm">
+    <div className="p-4">
       <h3>新增LAB</h3>
-      <form onSubmit={handleSubmit(onSubmit)} className="row">
-        <div className="mb-3 col input-group-sm">
-          <label htmlFor="name" className="form-label">
-            英文名稱
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <div className="space-y-2">
+          <label
+            htmlFor="title"
+            className="block text-sm font-medium text-gray-700"
+          >
+            名稱
           </label>
           <input
             type="text"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="name"
             {...register("name", { required: true })}
           />
         </div>
-        <div className="mb-3 col input-group-sm">
-          <label htmlFor="name_cht" className="form-label">
+        <div className="space-y-2">
+          <label
+            htmlFor="name_cht"
+            className="block text-sm font-medium text-gray-700"
+          >
             中文名稱
           </label>
           <input
             type="text"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="name_cht"
             {...register("name_cht", { required: true })}
           />
         </div>
-        <div className="mb-3 input-group-sm">
-          <label htmlFor="sitelink">網站連結</label>
+        <div className="space-y-2">
+          <label
+            htmlFor="sitelink"
+            className="block text-sm font-medium text-gray-700"
+          >
+            網站連結
+          </label>
           <input
             type="text"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="sitelink"
             {...register("sitelink")}
           />
         </div>
-        <div className="mb-3 input-group-sm">
-          <label htmlFor="video">
+        <div className="space-y-2">
+          <label
+            htmlFor="video"
+            className="block text-sm font-medium text-gray-700"
+          >
             vimeo 影片位置(https://player.vimeo.com/video/435638545)
           </label>
           <input
             type="text"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="video"
             {...register("video", { required: true })}
           />
         </div>
-        <div className="mb-3 input-group-sm">
-          <label htmlFor="file">圖片</label>
+        <div className="space-y-2">
+          <label
+            htmlFor="file"
+            className="block text-sm font-medium text-gray-700"
+          >
+            圖片
+          </label>
           <input
             type="file"
-            className="form-control"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             id="file"
             {...register("file", { required: true })}
           />
@@ -133,25 +152,31 @@ function AddLab({ handleCreateLab }: { handleCreateLab: any }) {
             {url && <img src={url} className="img-fluid" />}
           </div>
         </div>
-        <div className="d-grid gap-3">
+        <div className="space-y-2">
           <div className="p-2 bg-light border  ">
             <div className="mb-3 input-group-sm">
-              <label htmlFor="title_1" className="form-label">
+              <label
+                htmlFor="title_1"
+                className="block text-sm font-medium text-gray-700"
+              >
                 介紹1 - 英文標題
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 id="title_1"
                 {...register("title_1", { required: true })}
               />
             </div>
             <div className="mb-3 input-group-sm">
-              <label htmlFor="description_1" className="form-label">
+              <label
+                htmlFor="description_1"
+                className="block text-sm font-medium text-gray-700"
+              >
                 介紹1 - 英文
               </label>
               <textarea
-                className="form-control"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 id="description_1"
                 {...register("description_1", { required: true })}
               ></textarea>
@@ -159,22 +184,28 @@ function AddLab({ handleCreateLab }: { handleCreateLab: any }) {
           </div>
           <div className="p-2 bg-light border ">
             <div className="mb-3 input-group-sm">
-              <label htmlFor="title_1_cht" className="form-label">
+              <label
+                htmlFor="title_1_cht"
+                className="block text-sm font-medium text-gray-700"
+              >
                 介紹1 - 中文標題
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 id="title_1_cht"
                 {...register("title_1_cht", { required: true })}
               />
             </div>
             <div className="mb-3 input-group-sm">
-              <label htmlFor="description_1_cht" className="form-label">
+              <label
+                htmlFor="description_1_cht"
+                className="block text-sm font-medium text-gray-700"
+              >
                 介紹1 - 中文
               </label>
               <textarea
-                className="form-control"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 id="description_1_cht"
                 {...register("description_1_cht", { required: true })}
               ></textarea>
@@ -182,22 +213,28 @@ function AddLab({ handleCreateLab }: { handleCreateLab: any }) {
           </div>
           <div className="p-2 bg-light border ">
             <div className="mb-3 input-group-sm">
-              <label htmlFor="title_1" className="form-label">
+              <label
+                htmlFor="title_1"
+                className="block text-sm font-medium text-gray-700"
+              >
                 介紹2 - 英文標題
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 id="title_1"
                 {...register("title_1", { required: true })}
               />
             </div>
             <div className="mb-3 input-group-sm">
-              <label htmlFor="description_1" className="form-label">
+              <label
+                htmlFor="description_1"
+                className="block text-sm font-medium text-gray-700"
+              >
                 介紹2 - 英文
               </label>
               <textarea
-                className="form-control"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 id="description_1"
                 {...register("description_1", { required: true })}
               ></textarea>
@@ -205,22 +242,28 @@ function AddLab({ handleCreateLab }: { handleCreateLab: any }) {
           </div>
           <div className="p-2 bg-light border ">
             <div className="mb-3 input-group-sm">
-              <label htmlFor="title_1_cht" className="form-label">
+              <label
+                htmlFor="title_1_cht"
+                className="block text-sm font-medium text-gray-700"
+              >
                 介紹2 - 中文標題
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 id="title_1_cht"
                 {...register("title_1_cht", { required: true })}
               />
             </div>
             <div className="mb-3 input-group-sm">
-              <label htmlFor="description_1_cht" className="form-label">
+              <label
+                htmlFor="description_1_cht"
+                className="block text-sm font-medium text-gray-700"
+              >
                 介紹2 - 中文
               </label>
               <textarea
-                className="form-control"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 id="description_1_cht"
                 {...register("description_1_cht", { required: true })}
               ></textarea>
@@ -228,11 +271,17 @@ function AddLab({ handleCreateLab }: { handleCreateLab: any }) {
           </div>
         </div>
 
-        <div className="d-grid gap-2 d-md-block col-12">
-          <button type="submit" className="btn btn-primary">
+        <div className="space-y-2">
+          <button
+            type="submit"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
             新增
           </button>
-          <button type="reset" className="btn btn-light">
+          <button
+            type="reset"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          >
             重設
           </button>
         </div>

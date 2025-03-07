@@ -4,6 +4,7 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 import AddCategory from "./AddCategory";
 import EditCategory from "./EditCategory";
+import { Button } from "../ui/button";
 function Category({
   categoryData,
   handleCreateCategory,
@@ -53,26 +54,32 @@ function Category({
 
   return (
     <div className="flex">
-      <div className="w-9/12">
-        <h3>
+      <div className="w-9/12 px-4">
+        <h3 className="flex items-center gap-2 my-2">
           分類列表
-          <button
-            type="button"
-            className="btn btn-primary standardBtn ms-2"
+          <Button
             onClick={() => {
               handleClick("create", "");
             }}
           >
             新增分類
-          </button>
+          </Button>
         </h3>
-        <table className="table cmsWork table-hover ">
-          <thead className="thead-color">
+        <table className=" text-[15px]  border-collapse border border-gray-400">
+          <thead className="bg-[#e6eaee] text-[#242424]">
             <tr>
-              <th scope="col">#id</th>
-              <th scope="col">分類名稱-英文</th>
-              <th scope="col">分類名稱</th>
-              <th scope="col">編輯/刪除</th>
+              <th scope="col" className="p-2">
+                #id
+              </th>
+              <th scope="col" className="p-2">
+                分類名稱-英文
+              </th>
+              <th scope="col" className="p-2">
+                分類名稱
+              </th>
+              <th scope="col" className="p-2">
+                編輯/刪除
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -80,8 +87,11 @@ function Category({
               categoryData.map((item: any, index: number) => {
                 const { id, name, name_cht, uid, sort_num } = item;
                 return (
-                  <tr key={name + index}>
-                    <td className="id">
+                  <tr
+                    key={name + index}
+                    className="text-[15px] border-b border-[#ccc] p-2"
+                  >
+                    <td className="p-2">
                       ID:{id} <br />{" "}
                       <label htmlFor="">
                         Sort:
@@ -89,34 +99,32 @@ function Category({
                           type="text"
                           size={6}
                           defaultValue={sort_num}
+                          className="border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           // onChange={(e) => setValue(e.target.value)}
                           onKeyDown={(e) => _handleKeyDown(e, uid)}
                         />
                       </label>{" "}
                     </td>
-                    <td className="title"> {name}</td>
-                    <td className="title">{name_cht} </td>
+                    <td className="title p-2"> {name}</td>
+                    <td className="title p-2">{name_cht} </td>
 
-                    <td>
+                    <td className="p-2">
                       <div className="d-grid gap-2 d-md-block">
-                        <button
-                          type="button"
-                          className="btn btn-success btn-sm"
+                        <Button
                           onClick={() => {
                             handleClick("edit", uid);
                           }}
                         >
                           編輯
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-light btn-sm"
+                        </Button>
+                        <Button
+                          variant="outline"
                           onClick={() => {
                             onDelete(uid);
                           }}
                         >
                           刪除
-                        </button>
+                        </Button>
                       </div>
                     </td>
                   </tr>
